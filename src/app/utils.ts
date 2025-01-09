@@ -33,15 +33,13 @@ const canvastoFile = (canvas: HTMLCanvasElement, type: string, quality: number):
  */
 export const compressionFile = async(file: File, type = 'image/jpeg', quality = 0.5) => {
   if(type == 'image/heif'){
-    console.log('heif ing...')
-    return convertHeicToImage(file)
+    return convertHeicToImage(file, quality);
   }
 
   const fileName = file.name
   const canvas = document.createElement('canvas')
   const context = canvas.getContext('2d') as CanvasRenderingContext2D
   const base64 = await fileToDataURL(file)
-  console.log(base64);
   const img = await dataURLToImage(base64)
   canvas.width = img.width
   canvas.height = img.height
@@ -55,18 +53,17 @@ export const compressionFile = async(file: File, type = 'image/jpeg', quality = 
 
 const convertHeicToImage = async (
   file: Blob,
-  toType: string = 'image/jpeg',
   quality: number = 0.5
 ): Promise<File> => {
   try {
     const converted = await heic2any({
       blob: file,
-      toType: toType,
+      toType: 'image/jpeg',
       quality: quality, // Compress the image quality
     });
 
     return new File([converted as Blob], 'res', {
-      type: toType,
+      type: 'image/jpeg',
     });
   } catch (error) {
     console.error('HEIF Conversion Failed:', error);
