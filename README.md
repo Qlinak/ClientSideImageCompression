@@ -1,6 +1,7 @@
-# Temp
+# Clent side image compression
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
+This project aims to examine a optimal solution to image compression in client side browser, high speed, readable result, and supports of jpeg, png and heif files are the ultimate goal.
 
 ## Development server
 
