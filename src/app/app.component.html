@@ -5,20 +5,12 @@
 <hr />
 
 <form>
-  <label for="quality">Quality(specify a number from 1 - 100):</label>
+  <label for="quality">Quality(specify a number < 1, but 0.5 is tested to be the optimal quality):</label>
   <input type="text" id="quality" [(ngModel)]="quality" name="quality" />
 </form>
 
-<form>
-  <label for="ratio">Ratio (for Jpeg file only):</label>
-  <input type="text" id="ratio" [(ngModel)]="ratio" name="ratio" />
-</form>
-
 <section>
-<!--  <button (click)="compressFile()">Upload and compress jpeg</button>-->
-<!--  <button (click)="compressPng()">Upload and compress png</button>-->
   <input type="file" (change)="onFileSelected($event)"/>
-<!--  <button [disabled]="!fileBuffer" (click)="processImage()">Encode PNG</button>-->
   <p *ngIf="imgResultBeforeCompression">Image before compression: </p>
   <img *ngIf="imgResultBeforeCompression" [src]="imgResultBeforeCompression" alt="cannot display image/heif file in browser" />
 
