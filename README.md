@@ -6,7 +6,7 @@ This project aims to provide a plug and play utils.ts file for client side image
 The major client side compression solution involves [UPNG.js](https://github.com/photopea/UPNG.js) and/or [ngx-image-compress](https://www.npmjs.com/package/ngx-image-compress). However, UPNG.js requires the input image to be of RGBA format, otherwise manual conversion to RGBA format is required, resulting in a slower overall compression speed. ngx-image-compress, on the other hand, is quite fast and convienient, as it handles the file upload part automatically. However, it only supports jpeg format. Trying with .png format will result in a even larger file. Hence, in some scenario where color retaintion/image quality is not a serious concern (as long as the image is readable), I planned to examine a native typescript solution to a speedy client side image compression solution. 
 
 ## Core method in utils.ts
-The project does not rely on any third party library, it uses the `HTMLCanvasElement.toBlob()` method as the engine for compression. 
+The project does not rely on any third party library, it uses the `HTMLCanvasElement.toBlob()` method as the engine for compression. Just directly invoke the below method in your application. 
 ```
 /**
  * @param {Object}  file source file
