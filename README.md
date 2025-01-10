@@ -21,6 +21,9 @@ Since the [documentation](https://developer.mozilla.org/en-US/docs/Web/API/HTMLC
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. A mini web app will demonstrate the compression process.
 
+## How to use
+just paste the utils.ts file into your project code and invoke the `compressionFile` method
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
