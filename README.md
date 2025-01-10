@@ -1,23 +1,29 @@
-# Clent side image compression
+# Clent side lossy image compression
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.11.
-This project aims to examine a optimal solution to image compression in client side browser, high speed, readable result, and supports of jpeg, png and heif files are the ultimate goal.
+This project aims to provide a plug and play utils.ts file for client side image compression with hight speed (~0.5 seconds for file size ~5Mb) and relatively readable quality.
+
+## A bit of literature review
+The major client side compression solution involves [UPNG.js](https://github.com/photopea/UPNG.js) and/or [ngx-image-compress](https://www.npmjs.com/package/ngx-image-compress). However, UPNG.js requires the input image to be of RGBA format, otherwise manual conversion to RGBA format is required, resulting in a slower overall compression speed. ngx-image-compress, on the other hand, is quite fast and convienient, as it handles the file upload part automatically. However, it only supports jpeg format. Trying with .png format will result in a even larger file. Hence, in some scenario where color retaintion/image quality is not a serious concern (as long as the image is readable), I planned to examine a native typescript solution to a speedy client side image compression solution. 
+
+## Core method in utils.ts
+The project does not rely on any third party library, it uses the `HTMLCanvasElement.toBlob()` method as the engine for compression. 
+```
+/**
+ * @param {Object}  file source file
+ * @param {Nubmber} quality quality ranging from 0 to 1
+ * @returns a compressed new file in jpeg format
+ */
+export const compressionFile = async(file: File, quality = 0.5) => {...};
+```
+Since the [documentation](https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toBlob) of `HTMLCanvasElement.toBlob()` does not specify how `quality` will impact the actual compression result. I strongly recommend you to try out different values of quality to find out the optimal value for your compression. For my case, I found out `quality = 0.5` is the optimal compression ratio by considering both speed and quality. 
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. A mini web app will demonstrate the compression process.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
 ## Running end-to-end tests
 
