@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { compressionFile } from './utils'; // Import the utility functions
+import { compressionFile } from './utils';
 
 @Component({
   selector: 'app-root',
@@ -35,12 +35,7 @@ export class AppComponent {
       // Convert file to Base64 to display the original image
       const reader = new FileReader();
       reader.onload = () => {
-        if(file.type !== 'image/heif' && file.type !== 'image/heic'){
-          this.imgResultBeforeCompression = reader.result as string;
-        }
-        else{
-          this.imgResultBeforeCompression = 'data:image/png'; // set a dummy url
-        }
+        this.imgResultBeforeCompression = reader.result as string;
       };
       reader.readAsDataURL(file);
 
@@ -50,7 +45,6 @@ export class AppComponent {
 
         const compressedFile = await compressionFile(
           file,
-          file.type === 'image/heif' || file.type === 'image/heic' ? 'image/heif' : this.imageType,
           this.quality
         );
 

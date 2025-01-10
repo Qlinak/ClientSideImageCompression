@@ -12,7 +12,7 @@
 <section>
   <input type="file" (change)="onFileSelected($event)"/>
   <p *ngIf="imgResultBeforeCompression">Image before compression: </p>
-  <img *ngIf="imgResultBeforeCompression" [src]="imgResultBeforeCompression" alt="cannot display image/heif file in browser" />
+  <img *ngIf="imgResultBeforeCompression" [src]="imgResultBeforeCompression" alt="" />
 
   <p *ngIf="imgResultBeforeCompression">Compressing... </p>
   <p *ngIf="imgResultAfterCompression">Image after compression: </p>
@@ -20,9 +20,6 @@
 
 
 <!--  benchmarks-->
-  <p *ngIf="imgResultAfterCompression">
-    MIME Type of uploaded image: {{ imageType }}
-  </p>
   <p *ngIf="imgResultAfterCompression"> Size before compression: {{sizeBeforeCompression}} Mb</p>
   <p *ngIf="imgResultAfterCompression"> Size after compression: {{sizeAfterCompression}} Mb</p>
   <p *ngIf="imgResultAfterCompression"> Compression ratio: {{compressionRatio}}</p>
