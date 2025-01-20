@@ -1,6 +1,6 @@
 # Clent side lossy image compression
 
-This project aims to provide a plug and play utils.ts file for client side image compression with hight speed (~0.5 seconds for file size ~5Mb) and relatively readable quality.
+This project aims to provide a plug and play utils.ts file for client side image compression with high speed (~0.5 seconds for file size ~5Mb) and relatively readable quality.
 
 ## A bit of literature review
 The major client side compression solution involves [UPNG.js](https://github.com/photopea/UPNG.js) and/or [ngx-image-compress](https://www.npmjs.com/package/ngx-image-compress). However, UPNG.js requires the input image to be of RGBA format, otherwise manual conversion to RGBA format is required, resulting in a slower overall compression speed. ngx-image-compress, on the other hand, is quite fast and convienient, as it handles the file upload part automatically. However, it only supports jpeg format. Trying with .png format will result in a even larger file. Hence, in some scenario where color retaintion/image quality is not a serious concern (as long as the image is readable), a native typescript solution to a speedy client side image compression may be preferred. 
