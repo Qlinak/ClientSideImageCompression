@@ -27,3 +27,9 @@ just paste the utils.ts file into your project code and invoke the `compressionF
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Example
+before compression: ![2](https://github.com/user-attachments/assets/1d977bb1-7b76-4dcb-b04d-16f29186b39a)
+after compression: ![jpegRes1](https://github.com/user-attachments/assets/c30dc9da-1858-4dd8-8758-8bc1ed4940de)
+
+
